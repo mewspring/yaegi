@@ -154,11 +154,9 @@ func Test_pkgDir(t *testing.T) {
 		},
 	}
 
-	interp := &Interpreter{
-		opt: opt{
-			filesystem: &realFS{},
-		},
-	}
+	interp := New(Options{
+		Env: []string{"GOCACHE=" + os.Getenv("GOCACHE")},
+	})
 
 	for _, test := range testCases {
 		test := test
